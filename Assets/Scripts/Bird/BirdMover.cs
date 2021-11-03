@@ -20,23 +20,30 @@ public class BirdMover : MonoBehaviour
 
     private void Start()
     {
-        transform.position = _startPosition;
         _rigidbody2D = GetComponent<Rigidbody2D>();
 
-        _rigidbody2D.velocity = Vector2.zero;
         _maxRoration = Quaternion.Euler(0, 0, _maxRotationZ);
         _minRoration = Quaternion.Euler(0, 0, _minRotationZ);
+
+        ResetBird();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _rigidbody2D.velocity = new Vector2(_speed, 0);
+            _rigidbody2D.velocity = new Vector2(_speed, 0); // попробуй нью вынести в поля
             transform.rotation = _maxRoration;
             _rigidbody2D.AddForce(Vector2.up * _tapForce, ForceMode2D.Force); 
         }
 
         transform.rotation = Quaternion.Lerp(transform.rotation, _minRoration, _rotationSpeed * Time.deltaTime);
+    }
+
+    public void ResetBird()
+    {
+        transform.position = _startPosition;
+        transform.rotation = Quaternion.Euler(0, 0, 0);
+        _rigidbody2D.velocity = Vector2.zero;
     }
 }
