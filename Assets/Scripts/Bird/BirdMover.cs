@@ -17,7 +17,6 @@ public class BirdMover : MonoBehaviour
     private Quaternion _maxRoration;
     private Quaternion _minRoration;
 
-
     private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
