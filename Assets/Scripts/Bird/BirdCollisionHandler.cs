@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Bird))]
+
 public class BirdCollisionHandler : MonoBehaviour
 {
     private Bird _bird;
